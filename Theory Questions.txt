@@ -1,0 +1,152 @@
+Q1. what is the @component and @Controller.
+
+@Component : It is a basic auto component scan annotation, it indicates annotated class is an auto scan component. 
+@Controller : Annotated class indicates that it is a controller component, and mainly used at the presentation layer.
+
+
+Q2. @RequestMapping,@Required,@Qualifier,@Autowired, @Temporal,@Entity,@RequestBody,@RestController,@Query,@PathVariable Annotation, explain? 
+
+@RequestMapping:
+@RequestMapping is the most common and widely used annotation in Spring MVC. It is used to map web requests onto specific handler classes and/or handler methods. 
+@RequestMapping can be applied to the controller class as well as methods. name: Assign a name to this mapping.
+
+@Required:
+The @Required annotation applies to bean property setter methods and it indicates that the affected bean property must be populated in XML configuration file at configuration time. 
+Otherwise, the container throws a BeanInitializationException exception.
+
+@Qualifier:
+Spring Boot @Qualifier shows how to differentiate beans of the same type with @Qualifier. 
+It can also be used to annotate other custom annotations that can then be used as qualifiers.
+
+@Autowired:
+In the spring boot, the @Autowired annotation is used in setter methods to inject the value of the class properties. 
+When the bean is loaded in the ApplicationContext, the setter method is automatically called by the spring boot and the value is assigned.
+
+@Temporal:
+@Temporal  annotation must be specified for persistent fields or properties of type java.util.Date and java.util.Calendar.
+In JPA, @Temporal annotation solves the one of the major issue of converting the date and time values from Java object to compatible database type and retrieving back to the application.
+The mapping between the Java 8 Date/Time classes and the SQL types is implicit, there is not need to specify the @Temporal annotation.
+
+@Entity:
+The @Entity annotation specifies that the class is an entity and is mapped to a database table. 
+The @Table annotation specifies the name of the database table to be used for mapping.
+
+@RequestBody:
+The @RequestBody annotation is applicable to handler methods of Spring controllers. 
+This annotation indicates that Spring should deserialize a request body into an object. 
+This object is passed as a handler method parameter.
+
+@RestController:
+Spring RestController annotation is a convenience annotation that is itself annotated with @Controller and @ResponseBody. 
+This annotation is applied to a class to mark it as a request handler. 
+Spring RestController annotation is used to create RESTful web services using Spring MVC.
+
+@Query:
+The @Query annotation declares finder queries directly on repository methods. 
+While similar @NamedQuery is used on domain classes, Spring Data JPA @Query annotation is used on Repository interface. 
+This frees the domain classes from persistence specific information, which is a good thing.
+
+@PathVariable:
+@PathVariable is a Spring annotation which indicates that a method parameter should be bound to a URI template variable.
+
+It has the following optional elements:
+name - name of the path variable to bind to
+required - tells whether the path variable is required
+value - alias for name.
+
+
+Q3. What are the Stereotype annotations and define MVC flow.
+
+In spring autowiring, @Autowired annotation handles only wiring part. 
+We still have to define the beans so the container is aware of them and can inject them for us.
+With @Component, @Repository, @Service and @Controller annotations in place and automatic component scanning enabled,
+ Spring will automatically import the beans into the container and inject to dependencies. 
+These annotations are called Stereotype annotations as well. 
+
+
+Q4.- Diffrence between application.properties & YML file.
+
+1.One notable difference is how the properties are represented in each file. 
+   YAML files may use consistent spaces to denote hierarchy whereas properties file may use = to denote property values.
+Ex:-  Lists may be represented as inline list (separated by commas) in a properties file:
+     headers = user-agent, x-wag-diagonalsize
+2.Another difference is we can add multiple configuration files into single yaml file.
+Ex:-   For ex., we can add application.yaml(application specific properties) and bootstrap.yaml(server specific properties) into single config.yaml file.
+
+
+Q5. What are the scopes in Spring Framework?
+
+1.singleton:-
+This scopes the bean definition to a single instance per Spring IoC container (default).
+2.prototype:-
+This scopes a single bean definition to have any number of object instances.
+3.request:-
+This scopes a bean definition to an HTTP request. Only valid in the context of a web-aware Spring ApplicationContext.
+4.session:-
+This scopes a bean definition to an HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.
+5.global-session:-
+This scopes a bean definition to a global HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.
+
+
+Q6. What is cascading and what are different types of cascading?
+
+Cascading is a phenomenon involving one object propagating to other objects via a relationship. It is transitive in nature and the cascade attribute in hibernate defines the relationship between the entities. The cascading types supported by the hibernate framework are as follow:
+
+CascadeType.PERSIST: It means that the save() and persist() operations in the hibernate cascade to the related entities
+CascadeType.MERGE: It means that the related entities are joined when the owning entity is joined
+CascadeType.REMOVE: It means that the related entities are deleted when the owning entity is deleted
+CascadeType.DETACH: It detaches all the related entities if a manual detach occurs
+CascadeType.REFRESH: It works similar to the refresh() operation in the hibernate
+CascadeType.ALL: It is an alternative for performing all the above cascade operations in the hibernate framework
+
+
+Q7.what is the ioc container and autowiring?
+
+The IoC container is responsible to instantiate, configure and assemble the objects. The IoC container gets informations from the XML file and works accordingly. The main tasks performed by IoC container are:
+
+a)to instantiate the application class
+b)to configure the object
+c)to assemble the dependencies between the objects
+
+Autowiring feature of spring framework enables you to inject the object dependency implicitly. 
+It internally uses setter or constructor injection.
+Autowiring can't be used to inject primitive and string values. 
+It works with reference only.
+
+
+Q8.What is difference between hibernate and jpa? and What is Hibernate cache?
+
+JPA:
+
+JPA is described in javax.persistence package.	
+It describes the handling of relational data in Java applications.
+It is not an implementation. It is only a Java specification.
+It is a standard API that permits to perform database operations.
+As an object-oriented query language, it uses Java Persistence Query Language (JPQL) to execute database operations.
+To interconnect with the entity manager factory for the persistence unit, it uses EntityManagerFactory interface. Thus, it gives an entity manager.
+To make, read, and remove actions for instances of mapped entity classes, it uses EntityManager interface. This interface interconnects with the persistence condition.
+
+Hibernate:
+
+Hibernate is described in org.hibernate package.                                                                        	
+Hibernate is an Object-Relational Mapping (ORM) tool that is used to save the Java objects in the relational database system.
+Hibernate is an implementation of JPA. Hence, the common standard which is given by JPA is followed by Hibernate.
+It is used in mapping Java data types with SQL data types and database tables.
+As an object-oriented query language, it uses Hibernate Query Language (HQL) to execute database operations.
+To create Session instances, it uses SessionFactory interface.
+To make, read, and remove actions for instances of mapped entity classes, it uses Session interface. It acts as a runtime interface between a Java application and Hibernate.
+
+
+Q9.What is Hibernate cache?
+
+Hibernate caching improves the performance of the application by pooling the object in the cache. 
+It is useful when we have to fetch the same data multiple times.
+There are mainly two types of caching:
+First Level Cache, and
+Second Level Cache
+
+
+Q10.what is difference between Named Queries and Criteria Queries?
+
+Named queries are more optimal (they are parsed/prepared once).
+Criteria queries are dynamic, (they are not precompiled, although some JPA providers such as EclipseLink maintain a criteria prepare cache).
